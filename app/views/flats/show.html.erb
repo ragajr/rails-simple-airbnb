@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <h2><%= @flat.name %></h2>
+      <p><%= @flat.address %></p>
+
+      <div class="my-5">
+        <h3>A bit more about this flat</h3>
+        <p><%= @flat.description %></p>
+      </div>
+
+      <h3>Details</h3>
+      <%= render "details", price_per_night: @flat.price_per_night, number_of_guests: @flat.number_of_guests %>
+
+      <p><i class="fa-solid fa-pencil text-primary"></i><%= link_to "Edit", edit_flat_path(@flat), class:"mx-2 text-decoration-none text-primary" %></p>
+      <p><i class="fa-solid fa-trash text-danger"></i><%= link_to "Delete", flat_path(@flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"mx-2 text-decoration-none text-danger" %></p>
+
+    </div>
+    <div class="col-3 p-3">
+      <h3>Book this place!</h3>
+      <form>
+        <fieldset class="d-flex mt-1">
+          <label class="bg-light px-2 border">From:</label>
+          <input type="text" class="border p-1" placeholder="12/12/2012">
+        </fieldset>
+        <fieldset class="d-flex my-1">
+          <label class="bg-light px-2 border">To:</label>
+          <input type="text" class="border p-1" placeholder="12/12/2012">
+        </fieldset>
+        <input type="submit" class="btn btn-success w-100 fw-bold" value="Book">
+      </form>
+    </div>
+  </div>
+</div>

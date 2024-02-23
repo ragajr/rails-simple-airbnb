@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>All our flats(<%= @flats.size %>)</h1>
+  <div class="d-flex p-3 justify-content-between">
+    <% @flats.each do |flat| %>
+      <div class="shadow p-3">
+        <p class="fs-5 fw-bold m-0"><%= flat.name %></p>
+        <p><%= flat.description %></p>
+        <%= render "details", price_per_night: flat.price_per_night, number_of_guests: flat.number_of_guests %>
+        <div class="d-flex align-items-center w-100 justify-content-between mt-3">
+          <%= link_to "More info", flat_path(flat), class: "text-decoration-none text-primary fw-semi-bold" %>
+          <%= link_to "", edit_flat_path(flat), class: "fa-solid fa-pencil text-primary text-decoration-none" %>
+          <%= link_to "", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash text-danger text-decoration-none" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
